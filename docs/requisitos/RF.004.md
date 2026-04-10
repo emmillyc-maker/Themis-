@@ -1,4 +1,4 @@
-# Acompanhamento da Denúncia
+# Anexo de Evidências
 **COMO** usuário,  
-**QUERO** acompanhar o status da denúncia,  
-**PARA** saber o andamento sem revelar minha identidade.
+**QUERO** anexar evidências,  
+**PARA** fornecer provas que auxiliem na análise do caso.
