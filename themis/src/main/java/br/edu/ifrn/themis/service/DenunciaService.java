@@ -1,40 +1,33 @@
-package br.edu.ifrn.themis.service;
+package br.edu.ifrn.themis.servico;
 
 import br.edu.ifrn.themis.modelo.Denuncia;
+import br.edu.ifrn.themis.repositorio.DenunciaRepositorio;
 
 public class DenunciaService {
 
-    // RF.001 - Cadastro de denúncia
-    public void cadastrarDenuncia(Denuncia novaDenuncia) {
+    private final DenunciaRepositorio repositorio = new DenunciaRepositorio();
 
-        // Critério de Aceitação: descrição obrigatória
-        if (novaDenuncia.getDescricao() == null ||
-            novaDenuncia.getDescricao().isEmpty()) {
+    public void salvarNovaDenuncia(Denuncia denuncia) {
+
+        if (denuncia.getDescricao() == null ||
+            denuncia.getDescricao().trim().isEmpty()) {
 
             throw new IllegalArgumentException(
-                "A descrição da denúncia é obrigatória."
+                "Erro de Regra: A descrição da denúncia é obrigatória."
             );
         }
 
-        // Critério de Aceitação: tipo obrigatório
-        if (novaDenuncia.getTipo() == null ||
-            novaDenuncia.getTipo().isEmpty()) {
+        if (denuncia.getTipo() == null ||
+            denuncia.getTipo().trim().isEmpty()) {
 
             throw new IllegalArgumentException(
-                "O tipo da denúncia é obrigatório."
+                "Erro de Regra: O tipo da denúncia é obrigatório."
             );
         }
 
-        // Gerando código automático
-        novaDenuncia.setCodigo(novaDenuncia.gerarCodigo());
+        denuncia.setCodigo(denuncia.gerarCodigo());
+        denuncia.setStatus("Enviada");
 
-        // Definindo status inicial
-        novaDenuncia.setStatus("Enviada");
-
-        // Simulação de salvamento
-        System.out.println(
-            "Denúncia cadastrada com sucesso! Código: "
-            + novaDenuncia.getCodigo()
-        );
+        repositorio.inserir(denuncia);
     }
 }
