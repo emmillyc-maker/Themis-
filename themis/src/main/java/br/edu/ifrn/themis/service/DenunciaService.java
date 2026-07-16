@@ -1,4 +1,4 @@
-package br.edu.ifrn.themis.servico;
+package br.edu.ifrn.themis.service;
 
 import br.edu.ifrn.themis.modelo.Denuncia;
 import br.edu.ifrn.themis.repositorio.DenunciaRepositorio;
