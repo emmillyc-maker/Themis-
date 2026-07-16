@@ -12,17 +12,17 @@ public class DenunciaRepositorio {
         return GerenciadorDeConexao.getConnection();
     }
 
-    // [C] - INSERIR (INSERT)
     public void inserir(Denuncia denuncia) {
 
-        String sql = "INSERT INTO denuncia (titulo, descricao, status) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO denuncia (tipo, descricao, codigo, status) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setString(1, denuncia.getTitulo());
+            stmt.setString(1, denuncia.getTipo());
             stmt.setString(2, denuncia.getDescricao());
-            stmt.setString(3, denuncia.getStatus());
+            stmt.setString(3, denuncia.getCodigo());
+            stmt.setString(4, denuncia.getStatus());
 
             stmt.executeUpdate();
 
